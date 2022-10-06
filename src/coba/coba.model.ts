@@ -3,11 +3,10 @@ export interface Coba {
     fullname: string,
     moto: string,
     cv: string,
-    status
+    gender
 }
 
-export enum CobaStatus {
-    OPEN = 'OPEN',
-    IN_PROGRESS = 'IN_PROGRESS',
-    DONE = "DONE",
+export enum CobaGender {
+    OPEN = 'PRIA',
+    DONE = "WANITA",
 }
