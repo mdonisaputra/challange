@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body, Param, Patch, Delete, Query } from '@nestjs/common';
-import { Coba, } from './coba.model';
+import { Coba, CobaGender } from './coba.model';
 import { CobaService } from './coba.service';
+import { CreateCobaDTO } from './create-coba.dto';
 import {GetCobaStatusFilterDto} from './get-coba.filter';
 import { UpdateCobaStatusDto } from './update-coba.dto'
 
@@ -23,13 +24,10 @@ export class CobaController {
     }  
 
     @Post() // (3)
-    createCoba(
-        @Body('fullname') fullname:string,
-        @Body('moto') moto:string,
-        @Body('cv') cv:string,
+    createCoba(@Body() createCobaDTO: CreateCobaDTO
     ) : Coba {
         
-        return this.cobaService.createCoba(fullname, moto,cv);
+        return this.cobaService.createCoba(createCobaDTO);
     }
 
     @Get('/:id')

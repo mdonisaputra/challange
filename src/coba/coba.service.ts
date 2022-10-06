@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Coba, CobaGender } from './coba.model';
 import { v4 as uuid} from 'uuid';
 import {GetCobaStatusFilterDto} from './get-coba.filter';
+import { CreateCobaDTO } from './create-coba.dto';
 
 
 @Injectable()
@@ -40,13 +41,15 @@ export class CobaService {
         return coba;
     }
 
-    createCoba(fullname:string, moto:string, cv:string) : Coba { // (3)
+    createCoba(createCobaDTO : CreateCobaDTO) : Coba { 
+        const {
+            fullname, moto,cv} = createCobaDTO;// (3)
         const cobas : Coba = {
             id:uuid(),
             fullname,
             moto,
             cv,
-            gender: CobaGender.OPEN
+            gender: CobaGender.PRIA
         };
         this.coba.push(cobas);
         return cobas;

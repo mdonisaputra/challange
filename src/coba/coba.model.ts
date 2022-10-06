@@ -7,6 +7,6 @@ export interface Coba {
 }
 
 export enum CobaGender {
-    OPEN = 'PRIA',
-    DONE = "WANITA",
+    PRIA = 'PRIA',
+    WANITA = 'WANITA',
 }
