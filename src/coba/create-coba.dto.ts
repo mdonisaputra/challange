@@ -11,5 +11,5 @@ export class CreateCobaDTO{
     @IsNotEmpty()
     cv : string;
 
-    //gender;
+    gender;
 }

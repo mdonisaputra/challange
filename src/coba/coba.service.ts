@@ -3,6 +3,7 @@ import { Coba, CobaGender } from './coba.model';
 import { v4 as uuid} from 'uuid';
 import {GetCobaStatusFilterDto} from './get-coba.filter';
 import { CreateCobaDTO } from './create-coba.dto';
+import { UpdateCobaDto } from './update-coba.dto';
 
 
 @Injectable()
@@ -42,8 +43,7 @@ export class CobaService {
     }
 
     createCoba(createCobaDTO : CreateCobaDTO) : Coba { 
-        const {
-            fullname, moto,cv} = createCobaDTO;// (3)
+        const {fullname, moto,cv} = createCobaDTO;// (3)
         const cobas : Coba = {
             id:uuid(),
             fullname,
@@ -59,7 +59,7 @@ export class CobaService {
         //return this.coba.find((cobas) => cobas.id === id);
         const found = this.coba.find((cobas)=> cobas.id === id); //buat method found
         if(!found){
-            throw new NotFoundException('Task tidak ditemukan');
+            throw new NotFoundException('Data tidak ditemukan');
         }
  
         return found;
@@ -71,12 +71,29 @@ export class CobaService {
         this.coba = this.coba.filter((cobas)=> cobas.id !== found.id);
     }
 
-    updateCoba(id:string, fullname:string, moto:string, cv:string, gender: Coba) {
+    /*
+    updateCoba(
+        id:string, fullname:string, moto:string, cv:string, gender: CobaGender) {
         const cobas = this.getCobaById(id);
         cobas.fullname = fullname;
         cobas.moto = moto;
         cobas.cv = cv;
         cobas.gender = gender;
         return cobas;
+    }
+    */
+
+    updateCoba(
+        id:string,
+        updateCobaDTO: UpdateCobaDto,
+        gender: CobaGender,
+    ) {
+        const coba = this.getCobaById(id);
+        const {fullname,moto,cv} = updateCobaDTO;
+        coba.fullname = fullname;
+        coba.moto = moto;
+        coba.cv = cv;
+        coba.gender = gender;
+        return coba;
     }
 }

@@ -1,9 +1,16 @@
-import { IsEnum } from "class-validator";
-import { Coba, CobaGender } from "./coba.model";
+import { IsEnum, IsNotEmpty } from 'class-validator';
+import { CobaGender } from './coba.model';
  
-export class UpdateCobaStatusDto {
-    
+export class UpdateCobaDto {
+    @IsNotEmpty()
+    fullname: string;
+
+    @IsNotEmpty()
+    moto : string;
+
+    @IsNotEmpty()
+    cv : string;
 
     @IsEnum(CobaGender)
-    status : CobaGender;
+    gender : (CobaGender)
 }

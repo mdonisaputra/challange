@@ -1,9 +1,9 @@
 export interface Coba {
-    id: string,
-    fullname: string,
-    moto: string,
-    cv: string,
-    gender
+    id: string;
+    fullname: string;
+    moto: string;
+    cv: string;
+    gender : CobaGender;
 }
 
 export enum CobaGender {
