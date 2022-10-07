@@ -85,11 +85,13 @@ export class CobaService {
 
     updateCoba(
         id:string,
-        updateCobaDTO: UpdateCobaDto,
-        gender: CobaGender,
-    ) {
+        fullname:string,
+        moto:string,
+        cv:string,
+        gender: CobaGender)
+    {
         const coba = this.getCobaById(id);
-        const {fullname,moto,cv} = updateCobaDTO;
+        //const {fullname,moto,cv} = updateCobaDTO;
         coba.fullname = fullname;
         coba.moto = moto;
         coba.cv = cv;

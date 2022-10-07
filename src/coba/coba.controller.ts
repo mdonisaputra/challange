@@ -59,6 +59,6 @@ updateCoba(
     @Body() updateCobaDto: UpdateCobaDto,
 ): Coba {
     const { gender } = updateCobaDto;
-    return this.cobaService.updateCoba(id, fullname, moto, gender);
+    return this.cobaService.updateCoba(id, fullname, moto, cv, gender);
   }
 }

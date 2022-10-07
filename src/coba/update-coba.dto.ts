@@ -12,5 +12,5 @@ export class UpdateCobaDto {
     cv : string;
 
     @IsEnum(CobaGender)
-    gender : (CobaGender)
+    gender : (CobaGender);
 }
